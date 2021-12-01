@@ -1,0 +1,15 @@
+body {
+    padding: 0;
+    background:#18191A;
+    color:#fff;
+}
+nav {
+    background:#18191A;
+}
+h1 {
+    font-weight: 900;
+    font-size: 4.1rem;
+}
+.container {
+    max-width: 420px;
+}
