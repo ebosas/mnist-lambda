@@ -2,11 +2,12 @@ import React from "react";
 import CanvasDraw from "react-canvas-draw";
 
 function App() {
-    const canvasDraw = React.useRef<CanvasDraw>() as React.MutableRefObject<CanvasDraw>;
-    const canvasParent = React.useRef<HTMLDivElement>() as React.MutableRefObject<HTMLDivElement>;
+    const canvasDraw = React.useRef<CanvasDraw>(null);
+    const canvasParent = React.useRef<HTMLDivElement>(null);
     const [result, setResult] = React.useState<string>("Draw a digit above!");
 
     const checkDrawing = () => {
+        if (!canvasParent.current) { return }
         let canvas = canvasParent.current.querySelectorAll<HTMLCanvasElement>('canvas')[1];
         let data: number[] = getPixelData(canvas);
         if (data.length != 28*28) {
@@ -62,6 +63,7 @@ function App() {
     }
 
     const clearCanvas = () => {
+        if (!canvasDraw.current) { return }
         canvasDraw.current.clear();
         setResult("Draw a digit above!");
     }
